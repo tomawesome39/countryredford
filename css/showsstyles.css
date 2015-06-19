@@ -1,0 +1,46 @@
+﻿/* Style Sheet for shows page */
+
+html {
+	background: url(../img/band.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.main_content {
+	width: 96%;
+	float: left;
+	background-color: rgba(255,255,255,0.9);
+	margin: 1% 2%;
+	border-radius: 5px;
+}
+
+.eventCalendar {
+	width: 76%;
+	margin-left: 12%;
+	margin-right: 12%;
+	text-align: center;
+	margin-bottom: 2%;
+	font-size: 85%;
+	border: 0px solid #000;
+	/*border-radius: 5px;*/
+	border-collapse: collapse;
+}
+
+.eventCalendar th {
+	font-size: 125%;
+}
+
+.eventCalendar td {
+	border-top: 1px solid #000;
+	padding: 2%;
+}
+
+.eventCalendar td a:link, .eventCalendar td a:visited {
+	color: #4b412c;
+} 
+
+.eventCalendar td a:hover {
+	color: #656565;
+}

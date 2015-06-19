@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+	<meta charset="utf-8" />
+	
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="author" content="Thomas Clark" />
+	
+	<link rel="stylesheet" href="css/crstyles.css" type="text/css" />
+	<link rel="stylesheet" href="css/videostyles.css" type="text/css" />
+	
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="fancybox/lib/jquery-1.10.1.min.js"></script>
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+			$('.fancybox').fancybox();
+
+			/*
+			 *  Different effects
+			 */
+
+			// Change title type, overlay closing speed
+			$(".fancybox-effects-a").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+
+			// Disable opening and closing animations, change title type
+			$(".fancybox-effects-b").fancybox({
+				openEffect  : 'none',
+				closeEffect	: 'none',
+
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+
+			// Set custom style, close if clicked, change title type and overlay color
+			$(".fancybox-effects-c").fancybox({
+				wrapCSS    : 'fancybox-custom',
+				closeClick : true,
+
+				openEffect : 'none',
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					overlay : {
+						css : {
+							'background' : 'rgba(238,238,238,0.85)'
+						}
+					}
+				}
+			});
+
+			// Remove padding, set opening and closing animations, close if clicked and disable overlay
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+
+				openEffect : 'elastic',
+				openSpeed  : 150,
+
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+
+				closeClick : true,
+
+				helpers : {
+					overlay : null
+				}
+			});
+
+			/*
+			 *  Button helper. Disable animations, hide close button, change title type and content
+			 */
+
+			$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+
+
+			/*
+			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+			 */
+
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+			/*
+			 *  Open manually
+			 */
+
+			$("#fancybox-manual-a").click(function() {
+				$.fancybox.open('1_b.jpg');
+			});
+
+			$("#fancybox-manual-b").click(function() {
+				$.fancybox.open({
+					href : 'iframe.html',
+					type : 'iframe',
+					padding : 5
+				});
+			});
+
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : '1_b.jpg',
+						title : 'My title'
+					}, {
+						href : '2_b.jpg',
+						title : '2nd title'
+					}, {
+						href : '3_b.jpg'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+
+
+		});
+	</script>
+	<style type="text/css">
+		.fancybox-custom .fancybox-skin {
+			box-shadow: 0 0 50px #222;
+		}
+	</style>	
+	
+	<title>Country Reford Videos</title>
+	 
+	<!--Name:		Thomas Clark
+		Email:    tomclark@tomclark.info
+		Date(s):  5/24/15
+		Comments: Country Redford videos page
+	-->
+
+</head> 
+
+<body id="body">
+	<header>
+		<!--<h1 class="title">Country Redford</h1>-->
+		<p class="title"><img src="img/cr_logo.png" class="title_img" alt="Country Redford"/></p>
+		<hr class="hr_top" />
+		<nav class="nav">
+			<ul class="menu">
+				<li class="menu_item"><a class="nav_link" href="index.html">Home</a></li>
+				<li class="menu_item"><a class="nav_link" href="shows.html">Shows</a></li>
+				<li class="menu_item"><a class="nav_link, nav_selected" href="videos.html">Videos</a></li>
+				<li class="menu_item"><a class="nav_link" href="contact.php">Contact</a></li>
+				<li class="menu_item"><a class="nav_link" href="merch.html">Merch</a></li>
+			</ul>
+		</nav>
+		<hr class="hr_btm" />
+	</header>
+	
+	<div id="main_content_wrapper">
+		<div class="main_content">
+			<article class="video">
+				<figure>
+					<a class="fancybox fancybox.iframe" href="https://www.youtube-nocookie.com/embed/B3G-j4jobgM?rel=0"> <!-- embed URI -->
+					<img class="videoThumb" src="img/cr.jpg"><!-- URI to thumbnail --></a>
+				</figure>
+				<h2 class="videoTitle">Crazy Town</h2>
+			</article>
+			<article class="video">
+				<figure>
+					<a class="fancybox fancybox.iframe" href="https://www.youtube-nocookie.com/embed/XWwE8il4QyQ?rel=0"> <!-- embed URI -->
+					<img class="videoThumb" src="img/cr.jpg"><!-- URI to thumbnail --></a>
+				</figure>
+				<h2 class="videoTitle">Every Other Weekend</h2>
+			</article>
+			<article class="video">
+				<figure>
+					<a class="fancybox fancybox.iframe" href="https://www.youtube-nocookie.com/embed/mXJiTbPqKyo?rel=0"> <!-- embed URI -->
+					<img class="videoThumb" src="img/cr.jpg"><!-- URI to thumbnail --></a>
+				</figure>
+				<h2 class="videoTitle">Raise Your Glass</h2>
+			</article>
+			<article class="video">
+				<figure>
+					<a class="fancybox fancybox.iframe" href="https://www.youtube-nocookie.com/embed/ryKes-Wsk_I?rel=0"> <!-- embed URI -->
+					<img class="videoThumb" src="img/cr.jpg"><!-- URI to thumbnail --></a>
+				</figure>
+				<h2 class="videoTitle">Two Heroes - Original Song</h2>
+			</article>
+			<article class="video">
+				<figure>
+					<a class="fancybox fancybox.iframe" href="https://www.youtube-nocookie.com/embed/PGo5K8pf8JE?rel=0"> <!-- embed URI -->
+					<img class="videoThumb" src="img/cr.jpg"><!-- URI to thumbnail --></a>
+				</figure>
+				<h2 class="videoTitle">I Don't Want This Night To End</h2>
+			</article>
+			<article class="video">
+				<figure>
+					<a class="fancybox fancybox.iframe" href="https://www.youtube-nocookie.com/embed/xZvQufz3fKE?rel=0"> <!-- embed URI -->
+					<img class="videoThumb" src="img/cr.jpg"><!-- URI to thumbnail --></a>
+				</figure>
+				<h2 class="videoTitle">I Got You</h2>
+			</article>
+			<article class="video">
+				<figure>
+					<a class="fancybox fancybox.iframe" href="https://www.youtube-nocookie.com/embed/2TYVzKw1eBU?rel=0"> <!-- embed URI -->
+					<img class="videoThumb" src="img/cr.jpg"><!-- URI to thumbnail --></a>
+				</figure>
+				<h2 class="videoTitle">My Kinda Party</h2>
+			</article>
+			<article class="video">
+				<figure>
+					<a class="fancybox fancybox.iframe" href="https://www.youtube-nocookie.com/embed/XBWfQvE1W_E?rel=0"> <!-- embed URI -->
+					<img class="videoThumb" src="img/cr.jpg"><!-- URI to thumbnail --></a>
+				</figure>
+				<h2 class="videoTitle">Drink a Beer</h2>
+			</article>
+			<article class="video">
+				<figure>
+					<a class="fancybox fancybox.iframe" href=""https://www.youtube-nocookie.com/embed/sUO07zmFesk?rel=0"> <!-- embed URI -->
+					<img class="videoThumb" src="img/cr.jpg"><!-- URI to thumbnail --></a>
+				</figure>
+				<h2 class="videoTitle">Boots On</h2>
+			</article>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<div class="clear"></div>
+	
+	<footer id="footer">
+		<p class="foot_text">Country Redford &copy; 2015&nbsp;&nbsp; | &nbsp;&nbsp;Web design by <a href="http://www.tomclark.info">Thomas Clark</a></p>
+	</footer>
+	
+</body>
+</html>
